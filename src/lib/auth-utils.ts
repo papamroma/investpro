@@ -1,5 +1,4 @@
 import bcrypt from 'bcryptjs';
-// @ts-expect-error - jsonwebtoken types issue in Vercel build
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
