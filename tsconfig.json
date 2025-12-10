@@ -26,7 +26,11 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "types": [
+      "node",
+      "bcryptjs"
+    ]
   },
   "include": [
     "next-env.d.ts",
