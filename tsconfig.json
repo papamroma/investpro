@@ -26,7 +26,8 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "types": ["node", "jsonwebtoken"]
   },
   "include": [
     "next-env.d.ts",
