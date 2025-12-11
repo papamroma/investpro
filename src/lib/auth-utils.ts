@@ -5,7 +5,7 @@ const JWT_SECRET = new TextEncoder().encode(
     process.env.JWT_SECRET || 'your-secret-key-change-in-production'
 );
 
-export interface JWTPayload {
+export interface UserPayload {
     userId: string;
     email: string;
 }
@@ -22,7 +22,7 @@ export async function verifyPassword(password: string, hash: string): Promise<bo
 }
 
 // Generate JWT token
-export async function generateToken(payload: JWTPayload): Promise<string> {
+export async function generateToken(payload: UserPayload): Promise<string> {
     return await new SignJWT(payload as any)
         .setProtectedHeader({ alg: 'HS256' })
         .setExpirationTime('7d')
@@ -31,10 +31,10 @@ export async function generateToken(payload: JWTPayload): Promise<string> {
 }
 
 // Verify JWT token
-export async function verifyToken(token: string): Promise<JWTPayload | null> {
+export async function verifyToken(token: string): Promise<UserPayload | null> {
     try {
         const { payload } = await jwtVerify(token, JWT_SECRET);
-        return payload as unknown as JWTPayload;
+        return payload as unknown as UserPayload;
     } catch (error) {
         return null;
     }
