@@ -38,7 +38,7 @@ export default function InvestPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '30px' }}>
                 <Card title="Create New Investment">
                     <div style={{ marginBottom: '20px', fontSize: '0.9rem', color: '#ccc' }}>
-                        Earn <strong style={{ color: 'var(--secondary)' }}>0.5% daily interest</strong> on your investment.
+                        Earn <strong style={{ color: 'var(--secondary)' }}>5% daily interest</strong> on your investment.
                         Returns are calculated and credited daily.
                     </div>
 
@@ -89,7 +89,7 @@ export default function InvestPage() {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <span>Daily Rate</span>
-                            <strong style={{ color: 'var(--secondary)' }}>0.5%</strong>
+                            <strong style={{ color: 'var(--secondary)' }}>5%</strong>
                         </div>
                     </div>
                 </Card>
@@ -117,7 +117,7 @@ export default function InvestPage() {
                                         ${inv.amount.toFixed(2)}
                                     </div>
                                     <div style={{ fontSize: '0.8rem', color: 'var(--secondary)' }}>
-                                        +${(inv.amount * 0.005).toFixed(2)} / day
+                                        +${(inv.amount * 0.05).toFixed(2)} / day
                                     </div>
                                 </div>
                             </div>

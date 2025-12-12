@@ -3,6 +3,16 @@
 import React, { createContext, useContext } from 'react';
 import { useAuth } from './authContext';
 
+// Admin Wallet Configuration for Manual Transfers
+export const ADMIN_WALLET_CONFIG = {
+    mpesaPaybill: '123456',
+    mpesaAccount: 'INVESTPRO',
+    airtelTill: '987654',
+    tkashNumber: '0770123456',
+    paypalEmail: 'payments@investpro.com',
+    cryptoUSDT: '0x1234...abcd'
+};
+
 interface FinanceContextType {
     deposit: (amount: number, paymentMethod?: string) => Promise<void>;
     withdraw: (amount: number, method?: string) => Promise<void>;

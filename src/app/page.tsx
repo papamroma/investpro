@@ -50,7 +50,7 @@ export default function LandingPage() {
 
           <p style={{ fontSize: '1.2rem', color: '#888', maxWidth: '600px', margin: '0 auto 40px' }}>
             Join thousands of investors earning stable returns.
-            Experience our premium platform with 0.5% daily interest rates and secure withdrawals.
+            Experience our premium platform with 5% daily interest rates and secure withdrawals.
           </p>
 
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
@@ -65,7 +65,7 @@ export default function LandingPage() {
             <div className="glass-panel" style={{ padding: '30px' }}>
               <div style={{ fontSize: '2rem', marginBottom: '10px' }}>🚀</div>
               <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '10px' }}>High Returns</h3>
-              <p style={{ color: '#888' }}>Earn consistent 0.5% daily interest on your investments.</p>
+              <p style={{ color: '#888' }}>Earn consistent 5% daily interest on your investments.</p>
             </div>
             <div className="glass-panel" style={{ padding: '30px' }}>
               <div style={{ fontSize: '2rem', marginBottom: '10px' }}>🛡️</div>

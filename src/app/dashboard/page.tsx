@@ -28,7 +28,7 @@ export default function DashboardPage() {
                         {user?.investments?.length || 0}
                     </div>
                     <div style={{ fontSize: '0.9rem', color: '#888', marginTop: '5px', marginBottom: '15px' }}>
-                        Generating 0.5% daily
+                        Generating 5% daily
                     </div>
                     <Link href="/dashboard/invest">
                         <Button variant="outline" style={{ width: '100%' }}>View Investments</Button>
