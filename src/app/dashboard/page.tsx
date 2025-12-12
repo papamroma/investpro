@@ -13,7 +13,7 @@ export default function DashboardPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
                 <Card title="Total Balance">
                     <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--primary)' }}>
-                        ${user?.balance.toFixed(2)}
+                        ${(user?.balance || 0).toFixed(2)}
                     </div>
                     <div style={{ fontSize: '0.9rem', color: '#888', marginTop: '5px' }}>
                         Available for withdrawal
@@ -22,7 +22,7 @@ export default function DashboardPage() {
 
                 <Card title="Active Investments">
                     <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--secondary)' }}>
-                        {user?.investments.length}
+                        {user?.investments?.length || 0}
                     </div>
                     <div style={{ fontSize: '0.9rem', color: '#888', marginTop: '5px' }}>
                         Generating 0.5% daily

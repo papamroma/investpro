@@ -56,7 +56,7 @@ export default function WalletPage() {
                 <Card>
                     <div style={{ fontSize: '0.9rem', color: '#888' }}>Available Balance</div>
                     <div style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--primary)' }}>
-                        ${user?.balance.toFixed(2)}
+                        ${(user?.balance || 0).toFixed(2)}
                     </div>
                 </Card>
             </div>
