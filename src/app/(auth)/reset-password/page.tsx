@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card } from '@/components/ui/Card';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const token = searchParams.get('token');
@@ -60,54 +60,60 @@ export default function ResetPasswordPage() {
 
     if (!token) {
         return (
-            <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-                <Card className="w-full max-w-md" title="Error">
-                    <p style={{ color: '#ef4444', marginBottom: '20px' }}>Invalid or missing reset token.</p>
-                    <Link href="/forgot-password" style={{ color: 'var(--primary)' }}>Request a new link</Link>
-                </Card>
-            </div>
+            <Card className="w-full max-w-md" title="Error">
+                <p style={{ color: '#ef4444', marginBottom: '20px' }}>Invalid or missing reset token.</p>
+                <Link href="/forgot-password" style={{ color: 'var(--primary)' }}>Request a new link</Link>
+            </Card>
         );
     }
 
     return (
+        <Card className="w-full max-w-md" title="Set New Password">
+            <form onSubmit={handleSubmit}>
+                <Input
+                    label="New Password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    placeholder="••••••••"
+                />
+                <Input
+                    label="Confirm New Password"
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    placeholder="••••••••"
+                />
+
+                {message.text && (
+                    <div style={{
+                        padding: '12px',
+                        borderRadius: '4px',
+                        marginBottom: '20px',
+                        background: message.type === 'error' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)',
+                        color: message.type === 'error' ? '#ef4444' : '#10b981',
+                        border: `1px solid ${message.type === 'error' ? '#ef4444' : '#10b981'}`
+                    }}>
+                        {message.text}
+                    </div>
+                )}
+
+                <Button type="submit" style={{ width: '100%' }} disabled={loading}>
+                    {loading ? 'Resetting...' : 'Reset Password'}
+                </Button>
+            </form>
+        </Card>
+    );
+}
+
+export default function ResetPasswordPage() {
+    return (
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-            <Card className="w-full max-w-md" title="Set New Password">
-                <form onSubmit={handleSubmit}>
-                    <Input
-                        label="New Password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        placeholder="••••••••"
-                    />
-                    <Input
-                        label="Confirm New Password"
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                        placeholder="••••••••"
-                    />
-
-                    {message.text && (
-                        <div style={{
-                            padding: '12px',
-                            borderRadius: '4px',
-                            marginBottom: '20px',
-                            background: message.type === 'error' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)',
-                            color: message.type === 'error' ? '#ef4444' : '#10b981',
-                            border: `1px solid ${message.type === 'error' ? '#ef4444' : '#10b981'}`
-                        }}>
-                            {message.text}
-                        </div>
-                    )}
-
-                    <Button type="submit" style={{ width: '100%' }} disabled={loading}>
-                        {loading ? 'Resetting...' : 'Reset Password'}
-                    </Button>
-                </form>
-            </Card>
+            <Suspense fallback={<div>Loading...</div>}>
+                <ResetPasswordForm />
+            </Suspense>
         </div>
     );
 }
