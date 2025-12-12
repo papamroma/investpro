@@ -67,7 +67,7 @@ export default function InvestPage() {
                             placeholder="Min $10.00"
                         />
                         <div style={{ marginBottom: '15px', fontSize: '0.8rem', color: '#888' }}>
-                            Available Balance: ${user?.balance.toFixed(2)}
+                            Available Balance: ${(user?.balance || 0).toFixed(2)}
                         </div>
                         <Button type="submit" style={{ width: '100%' }} disabled={loading}>
                             {loading ? 'Processing...' : 'Invest Now'}
@@ -80,12 +80,12 @@ export default function InvestPage() {
                         <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>
                             <span>Total Invested</span>
                             <strong style={{ color: 'var(--foreground)' }}>
-                                ${user?.investments.reduce((acc: number, curr: any) => acc + curr.amount, 0).toFixed(2)}
+                                ${(user?.investments || []).reduce((acc: number, curr: any) => acc + curr.amount, 0).toFixed(2)}
                             </strong>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>
                             <span>Active Plans</span>
-                            <strong style={{ color: 'var(--foreground)' }}>{user?.investments.length}</strong>
+                            <strong style={{ color: 'var(--foreground)' }}>{(user?.investments || []).length}</strong>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <span>Daily Rate</span>
@@ -97,7 +97,7 @@ export default function InvestPage() {
 
             <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '20px' }}>Active Investments</h2>
 
-            {user?.investments.length === 0 ? (
+            {(user?.investments || []).length === 0 ? (
                 <Card>
                     <div style={{ textAlign: 'center', color: '#888', padding: '20px' }}>
                         No active investments found. Start investing today!
@@ -105,7 +105,7 @@ export default function InvestPage() {
                 </Card>
             ) : (
                 <div style={{ display: 'grid', gap: '15px' }}>
-                    {user?.investments.map((inv: any) => (
+                    {(user?.investments || []).map((inv: any) => (
                         <Card key={inv.id} className="flex justify-between items-center">
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                                 <div>
