@@ -13,6 +13,7 @@ interface User {
     phoneVerified: boolean;
     balance: number;
     investments: any[];
+    isAdmin?: boolean;
 }
 
 interface AuthContextType {
@@ -22,6 +23,8 @@ interface AuthContextType {
     logout: () => void;
     isAuthenticated: boolean;
     refreshUser: () => Promise<void>;
+    getToken: () => string | null;
+    loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -117,8 +120,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     };
 
+    const getToken = () => token;
+    const loading = false; // You might want to implement real loading state if needed, for now defaulting to false after initial check
+
     return (
-        <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated: !!user, refreshUser }}>
+        <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated: !!user, refreshUser, getToken, loading }}>
             {children}
         </AuthContext.Provider>
     );

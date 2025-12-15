@@ -8,6 +8,7 @@ const JWT_SECRET = new TextEncoder().encode(
 export interface UserPayload {
     userId: string;
     email: string;
+    isAdmin?: boolean;
 }
 
 // Hash password
