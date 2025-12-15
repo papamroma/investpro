@@ -1,8 +1,10 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/lib/authContext';
 import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 
 export default function DashboardPage() {
     const { user } = useAuth();

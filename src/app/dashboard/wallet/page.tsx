@@ -193,14 +193,14 @@ export default function WalletPage() {
 
             <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
                 <Button
-                    variant={activeTab === 'deposit' ? 'default' : 'outline'}
+                    variant={activeTab === 'deposit' ? 'primary' : 'outline'}
                     onClick={() => { setActiveTab('deposit'); setMessage({ type: '', text: '' }); setAmount(''); }}
                     style={{ flex: 1 }}
                 >
                     Deposit
                 </Button>
                 <Button
-                    variant={activeTab === 'withdraw' ? 'default' : 'outline'}
+                    variant={activeTab === 'withdraw' ? 'primary' : 'outline'}
                     onClick={() => { setActiveTab('withdraw'); setMessage({ type: '', text: '' }); setAmount(''); }}
                     style={{ flex: 1 }}
                 >
